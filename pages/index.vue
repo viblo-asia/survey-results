@@ -6,16 +6,16 @@
 
         <div class="app-container container-fluid">
             <div class="row">
-                <div class="app-sidebar col-md-3 d-none d-sm-block">
+                <Main :answers="fechedData" class="app-main col" />
+
+                <div class="app-sidebar col-md-3 d-none d-md-block">
                     <SideBar :answers="fechedData" class="menu sticky-top" />
                 </div>
-
-                <Main :answers="fechedData" class="app-main col" />
             </div>
         </div>
 
         <footer class="app-footer container-fluid">
-            <Footer class="row" />
+            <Footer />
         </footer>
     </div>
 </template>
@@ -30,16 +30,16 @@
     export default {
         components: {
             Hero,
-            SideBar,
+            Footer,
             Main,
-            Footer
+            SideBar
         },
 
         asyncData() {
             return axios.get("/api/survey").then(({ data }) => {
-                return { fechedData: data }
+                return { fechedData: data.data }
             })
-        }
+        },
     }
 </script>
 
@@ -72,6 +72,9 @@
         &-footer {
             background-color: rgb(241, 245, 250);
             min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 </style>

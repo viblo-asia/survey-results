@@ -82,3 +82,8 @@ dist
 
 # Service worker
 sw.*
+
+
+.firebaserc
+firebase.*
+/.firebase
