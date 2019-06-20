@@ -6,7 +6,8 @@ export default {
     mode: 'universal',
 
     env: {
-        baseUrl: process.env.API_HOST || 'https://viblo.asia'
+        baseUrl: process.env.API_HOST || 'https://viblo.asia',
+        IMAGES_URL: process.env.IMAGES_URL || 'https://images.viblo.asia'
     },
     /*
      ** Headers of the page

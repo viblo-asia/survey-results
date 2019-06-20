@@ -1,28 +1,38 @@
 <template>
     <div>
-        <section>
-            <OverView />
-        </section>
+        <div class="mb-5">
+            <Entry entry="overview" />
+            <section>
+                <OverView />
+            </section>
+        </div>
 
-        <section v-for="answer in answers" :key="answer.name">
-            <ResultItem :answer="answer" />
-        </section>
+        <div>
+            <Entry entry="products" />
+
+            <section v-for="answer in answers" :key="answer.id">
+                <ResultItem :item="answer" class="mb-1" />
+            </section>
+        </div>
     </div>
 </template>
 
 <script>
     import OverView from "~/components/Main/OverView.vue"
-    import ResultItem from "~/components/Main/ResultItem.vue"
+    import ResultItem from "~/components/Main/Result/Item.vue"
+    import Entry from "~/components/Site/Entry.vue"
 
     export default {
         components: {
             OverView,
-            ResultItem
+            ResultItem,
+            Entry
         },
 
         props: {
             answers: {
-                type: Array
+                type: Array,
+                required: true
             }
         }
     }

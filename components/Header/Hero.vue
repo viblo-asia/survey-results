@@ -2,7 +2,7 @@
     <div class="hero">
         <div class="hero__logo">
             <a href="https://viblo.asia">
-                <img src="~/static/logo--dark.png" alt="Logo">
+                <img src="/logo--dark.png" alt="Logo">
             </a>
         </div>
 

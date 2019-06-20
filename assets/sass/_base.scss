@@ -1,11 +1,11 @@
 html,
 body {
-    font-size: 100%;
     font-family: $--default-font-family;
     font-weight: $--default-font-weight;
     line-height: 1.8;
     margin: 0;
     padding: 0;
+    background-color: $gray-200;
 }
 
 * {
@@ -19,6 +19,9 @@ ul {
     margin: 0;
     padding: 0;
 }
+a {
+    color: $blue;
+}
 
 .app {
     min-height: 100vh;
@@ -26,4 +29,5 @@ ul {
 
 .app-container {
     max-width: $max-width-container;
+    background-color: $white;
 }
