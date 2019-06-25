@@ -87,3 +87,6 @@ sw.*
 .firebaserc
 firebase.*
 /.firebase
+
+# build file
+dist.zip

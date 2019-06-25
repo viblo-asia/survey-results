@@ -3,7 +3,7 @@
         <div class="mb-5">
             <Entry entry="overview" />
             <section>
-                <OverView />
+                <OverView :projects-total="answers.length" />
             </section>
         </div>
 
