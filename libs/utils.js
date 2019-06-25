@@ -1,4 +1,5 @@
-import _findIndex from 'lodash/findIndex'
+import _get from 'lodash/get'
+import _find from 'lodash/find'
 
 export function image(imageItem, size) {
     return size
@@ -6,10 +7,7 @@ export function image(imageItem, size) {
         : `${process.env.IMAGES_URL}/${imageItem}`
 }
 
-export function findContentOfQuestion(answers, question) {
-    const index = _findIndex(answers, function(o) {
-        return o.question == question
-    })
-
-    return index === '-1' ? null : answers[index].content
+export function findContentOfQuestion(answers = [], question) {
+    const result = _find(answers, item => item.question === question)
+    return _get(result, 'content')
 }
