@@ -1,36 +1,20 @@
 <template>
-    <div class="app">
-        <header class="app-header header">
-            <Hero />
-        </header>
+    <div class="row">
+        <Main :answers="answers" class="app-main col" />
 
-        <div class="app-container container-fluid">
-            <div class="row">
-                <Main :answers="answers" class="app-main col" />
-
-                <div class="app-sidebar col-md-3 d-none d-md-block">
-                    <SideBar :answers="answers" class="menu sticky-top" />
-                </div>
-            </div>
+        <div class="app-sidebar col-md-3 d-none d-md-block">
+            <SideBar :answers="answers" class="menu sticky-top" />
         </div>
-
-        <footer class="app-footer container-fluid">
-            <Footer />
-        </footer>
     </div>
 </template>
 
 <script>
     import axios from "~/plugins/axios"
-    import Hero from "~/components/Header/Hero.vue"
     import SideBar from "~/components/Site/SideBar.vue"
-    import Footer from "~/components/Site/Footer.vue"
     import Main from "~/components/Site/Main.vue"
 
     export default {
         components: {
-            Hero,
-            Footer,
             Main,
             SideBar
         },

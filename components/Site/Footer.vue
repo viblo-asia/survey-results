@@ -1,11 +1,11 @@
 <template>
-    <div class="footer row">
-        <div
-            class="footer__copyright text-center h-100"
-        >
-            © {{ dateYear }} Viblo. All rights reserved.
+    <footer class="footer">
+        <div class="row">
+            <div class="footer__copyright text-center h-100">
+                © {{ dateYear }} Viblo. All rights reserved.
+            </div>
         </div>
-    </div>
+    </footer>
 </template>
 
 <script>
@@ -19,7 +19,6 @@
         }
     }
 </script>
-
 
 <style lang="scss">
     .footer {
