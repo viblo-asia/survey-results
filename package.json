@@ -1,8 +1,4 @@
 {
-  "name": "survey-results",
-  "version": "1.0.0",
-  "description": "The landing page for display Viblo survey results",
-  "author": "quanKM",
   "private": true,
   "scripts": {
     "dev": "nuxt",

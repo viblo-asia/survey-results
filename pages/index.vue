@@ -6,10 +6,10 @@
 
         <div class="app-container container-fluid">
             <div class="row">
-                <Main :answers="fechedData" class="app-main col" />
+                <Main :answers="answers" class="app-main col" />
 
                 <div class="app-sidebar col-md-3 d-none d-md-block">
-                    <SideBar :answers="fechedData" class="menu sticky-top" />
+                    <SideBar :answers="answers" class="menu sticky-top" />
                 </div>
             </div>
         </div>
@@ -35,10 +35,17 @@
             SideBar
         },
 
-        asyncData() {
-            return axios.get("/api/survey").then(({ data }) => {
-                return { fechedData: data.data }
-            })
+        data: () => ({
+            answers: [],
+        }),
+
+        async asyncData() {
+            try {
+                const { data: { data: answers } } = await axio.get('/api/survey')
+                return { answers }
+            } catch(e) {
+                //
+            }
         },
     }
 </script>

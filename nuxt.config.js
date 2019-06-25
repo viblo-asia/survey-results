@@ -1,5 +1,3 @@
-import pkg from './package'
-
 require('dotenv').config()
 
 export default {
@@ -9,16 +7,17 @@ export default {
         baseUrl: process.env.API_HOST || 'https://viblo.asia',
         IMAGES_URL: process.env.IMAGES_URL || 'https://images.viblo.asia'
     },
+
     /*
      ** Headers of the page
      */
     head: {
-        title: 'Viblo Technical Stack Survey',
+        title: 'Technical Survey Results | Viblo',
 
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { hid: 'description', name: 'description', content: pkg.description }
+            { hid: 'description', name: 'description', content: 'Viblo Teachnical Survey Results 2019' }
         ],
 
         link: [
@@ -55,10 +54,14 @@ export default {
      */
     build: {
         transpile: [/^element-ui/],
+    },
 
-        /*
-         ** You can extend webpack config here
-         */
-        extend(config, ctx) {}
-    }
+    router: {
+        base: process.env.PUBLIC_PATH || '/survey-results/',
+    },
+
+    server: {
+        host: process.env.HOST || '0.0.0.0',
+        port: process.env.PORT || 3000
+    },
 }
