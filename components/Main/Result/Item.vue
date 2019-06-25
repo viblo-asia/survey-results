@@ -27,12 +27,14 @@
 </template>
 
 <script>
+    import _filter from 'lodash/filter'
+    import _includes from 'lodash/includes'
     import _startCase from "lodash/startCase"
     import _findIndex from "lodash/findIndex"
     import scroll from "~/mixins/scroll"
     import { VPopover } from "v-tooltip"
-    import Info from "./Info.vue"
     import { findContentOfQuestion } from "~/libs/utils"
+    import Info from "./Info.vue"
 
     const filtedQuestion = [
         "product_name",
@@ -45,11 +47,12 @@
     ]
 
     export default {
+        mixins: [scroll],
+
         components: {
             VPopover,
-            Info
+            Info,
         },
-        mixins: [scroll],
 
         props: {
             item: {
@@ -57,32 +60,35 @@
                 type: Object
             }
         },
+
         data() {
             return {
                 answers: this.item.answers.data
             }
         },
+
         computed: {
             filtedAnswers() {
-                return this.answers.filter(
-                    o => !filtedQuestion.includes(o.question)
-                )
+                return _filter(this.answers, item => _includes(filtedQuestion, item.question))
             },
+
             productSideInfo() {
-                return this.answers.filter(o =>
-                    filtedQuestion.includes(o.question)
-                )
+                return _filter(this.answers, item => _includes(filtedQuestion, item.question))
             },
+
             productDescription() {
                 return findContentOfQuestion(this.answers, "product_description")
             },
+
             productName() {
                 return findContentOfQuestion(this.answers, "product_name")
             },
+
             productUrl() {
                 return findContentOfQuestion(this.answers, "product_url")
             }
         },
+
         methods: {
             formatQuestionName(text) {
                 return _startCase(text)

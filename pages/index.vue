@@ -41,12 +41,12 @@
 
         async asyncData() {
             try {
-                const { data: { data: answers } } = await axio.get('/api/survey')
-                return { answers }
+                const { data } = await axios.get('/api/survey')
+                return { answers: data.data }
             } catch(e) {
-                //
+                return { answers: [] }
             }
-        },
+        }
     }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar">
         <div class="sidebar__logo">
-            <img src="/logo.png" alt="Logo">
+            <img src="~assets/images/logo.png" alt="Logo">
         </div>
 
         <ul class="sidebar__path">

@@ -1,7 +1,9 @@
 require('dotenv').config()
 
+const PUBLIC_PATH = process.env.PUBLIC_PATH
+
 export default {
-    mode: 'universal',
+    mode: 'spa',
 
     env: {
         baseUrl: process.env.API_HOST || 'https://viblo.asia',
@@ -54,10 +56,15 @@ export default {
      */
     build: {
         transpile: [/^element-ui/],
+
+        /*
+        ** Build configuration
+        */
+        publicPath: '/assets',
     },
 
     router: {
-        base: process.env.PUBLIC_PATH || '/survey-results/',
+        base: PUBLIC_PATH,
     },
 
     server: {
