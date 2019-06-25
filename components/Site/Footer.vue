@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer">
+    <footer class="footer app-footer">
         <div class="row">
             <div class="footer__copyright text-center h-100">
                 © {{ dateYear }} Viblo. All rights reserved.
