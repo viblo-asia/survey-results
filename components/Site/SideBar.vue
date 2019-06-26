@@ -4,12 +4,13 @@
             <img src="~assets/images/logo.png" alt="Logo">
         </div>
 
-        <ul class="sidebar__path">
+        <ul id="main-menu" class="sidebar__path">
             <li v-for="(path,index) in defaultPath" :key="index">
                 <a
                     v-scroll-to="scroll(path)"
                     :class="{'active': active(path) }"
-                    href="#"
+                    class="menu-item"
+                    :href="`#${formatScrollableId(path)}`"
                 >{{ answerTitle(path) }}</a>
 
                 <ul v-if="path ==='products'" class="sidebar__path-answer">
@@ -17,7 +18,8 @@
                         <a
                             v-scroll-to="scroll(answerPath)"
                             :class="{'active': (active(answerPath) || (currentRouteHash === '#products' && answerPathIndex === 0)) }"
-                            href="#"
+                            class="menu-item"
+                            :href="`#${formatScrollableId(answerPath)}`"
                         >{{ answerTitle(answerPath) }}</a>
                     </li>
                 </ul>
@@ -31,6 +33,7 @@
     import _keys from "lodash/keys"
     import _get from "lodash/get"
     import scroll from "~/mixins/scroll"
+    import scrollSpy from 'simple-scrollspy'
 
     export default {
         mixins: [scroll],
@@ -53,11 +56,23 @@
                 answersPath
             }
         },
+
         computed: {
             currentRouteHash() {
                 return this.$route.hash
             }
         },
+
+        mounted(){
+            window.onload = function () {
+                scrollSpy('#main-menu', {
+                    sectionClass: '.scrollspy',
+                    menuActiveTarget: '.menu-item',
+                    offset: 100
+                })
+            }
+        },
+
         methods: {
             answerTitle(name) {
                 return _lowerCase(name)

@@ -1,5 +1,5 @@
 <template>
-    <div :id="formatScrollableId(productName)" class="result-item">
+    <section :id="formatScrollableId(productName)" class="result-item scrollspy">
         <div class="result-item__product-name">
             <VPopover trigger="hover" :delay="{ show: 200, hide: 300 }">
                 <a :href="productUrl" target="_blank">{{ productName }}</a>
@@ -23,7 +23,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -36,17 +36,17 @@
     import { findContentOfQuestion } from "~/libs/utils"
     import Info from "./Info.vue"
 
-    const filtedQuestion = [
+    const ignoredQuestion = [
         "product_name",
         "product_url",
         "product_description",
         "company_name",
+        "banner_image",
+        "company_logo"
     ]
 
-    const filtedQuestionFull = [
+    const productSideInfo = [
         "product_name",
-        "product_url",
-        "product_description",
         "banner_image",
         "company_name",
         "company_url",
@@ -54,12 +54,12 @@
     ]
 
     export default {
-        mixins: [scroll],
 
         components: {
             VPopover,
             Info,
         },
+        mixins: [scroll],
 
         props: {
             item: {
@@ -76,11 +76,11 @@
 
         computed: {
             filtedAnswers() {
-                return _filter(this.answers, item => _includes(filtedQuestion, item.question))
+                return _filter(this.answers, item => !_includes(ignoredQuestion, item.question))
             },
 
             productSideInfo() {
-                return _filter(this.answers, item => _includes(filtedQuestionFull, item.question))
+                return _filter(this.answers, item => _includes(productSideInfo, item.question))
             },
 
             productDescription() {
