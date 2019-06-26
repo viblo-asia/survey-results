@@ -7275,6 +7275,11 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
+simple-scrollspy@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/simple-scrollspy/-/simple-scrollspy-2.0.1.tgz#9399290d1a96c58f13913f80ecfa3afbe9bb34df"
+  integrity sha512-fb/Ze/qnfK3/EABCsZXBWVVSlZkU+2bAM4g3cHJloOCZi9keufxIvoXvF6LtFcYezA9FJfGMMASAv2Z1ct6xoQ==
+
 simple-swizzle@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/simple-swizzle/-/simple-swizzle-0.2.2.tgz#a4da6b635ffcccca33f70d17cb92592de95e557a"

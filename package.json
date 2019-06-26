@@ -13,6 +13,7 @@
     "dotenv": "^8.0.0",
     "lodash": "^4.17.11",
     "nuxt": "^2.4.0",
+    "simple-scrollspy": "^2.0.1",
     "v-tooltip": "^2.0.2",
     "vue-scrollto": "^2.15.0"
   },

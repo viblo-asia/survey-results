@@ -58,6 +58,7 @@
 
         &-main {
             margin: 20px auto;
+            min-height: 60vh;
         }
 
         &-footer {

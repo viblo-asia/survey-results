@@ -2,17 +2,18 @@
     <div>
         <div class="mb-5">
             <Entry entry="overview" />
-            <section>
+
+            <section id="overview" class="scrollspy">
                 <OverView :projects-total="answers.length" />
             </section>
         </div>
 
         <div>
-            <Entry entry="products" />
+            <Entry id="products" entry="products" class="scrollspy" />
 
-            <section v-for="answer in answers" :key="answer.id">
+            <div v-for="answer in answers" :key="answer.id">
                 <ResultItem :item="answer" class="mb-1" />
-            </section>
+            </div>
         </div>
     </div>
 </template>
