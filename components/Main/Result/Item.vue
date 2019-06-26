@@ -5,7 +5,7 @@
                 <a :href="productUrl" target="_blank">{{ productName }}</a>
 
                 <template slot="popover">
-                    <Info :answers="productSideInfo" />
+                    <Info :answers="productInfo" />
                 </template>
             </VPopover>
         </div>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+    import _transform from 'lodash/transofrm'
     import _filter from 'lodash/filter'
     import _includes from 'lodash/includes'
     import _startCase from "lodash/startCase"
@@ -36,7 +37,7 @@
     import { findContentOfQuestion } from "~/libs/utils"
     import Info from "./Info.vue"
 
-    const ignoredQuestion = [
+    const productInfoFields = [
         "product_name",
         "product_url",
         "product_description",
@@ -45,20 +46,12 @@
         "company_logo"
     ]
 
-    const productSideInfo = [
-        "product_name",
-        "banner_image",
-        "company_name",
-        "company_url",
-        "company_logo"
-    ]
-
     export default {
-
         components: {
             VPopover,
             Info,
         },
+
         mixins: [scroll],
 
         props: {
@@ -76,11 +69,11 @@
 
         computed: {
             filtedAnswers() {
-                return _filter(this.answers, item => !_includes(ignoredQuestion, item.question))
+                return _filter(this.answers, answer => !_includes(productInfoFields, answer.question))
             },
 
-            productSideInfo() {
-                return _filter(this.answers, item => _includes(productSideInfo, item.question))
+            productInfo() {
+                return _filter(this.answers, answer => _includes(productInfoFields, answer.question))
             },
 
             productDescription() {
