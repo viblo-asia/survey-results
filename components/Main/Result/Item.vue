@@ -40,6 +40,13 @@
         "product_name",
         "product_url",
         "product_description",
+        "company_name",
+    ]
+
+    const filtedQuestionFull = [
+        "product_name",
+        "product_url",
+        "product_description",
         "banner_image",
         "company_name",
         "company_url",
@@ -73,7 +80,7 @@
             },
 
             productSideInfo() {
-                return _filter(this.answers, item => _includes(filtedQuestion, item.question))
+                return _filter(this.answers, item => _includes(filtedQuestionFull, item.question))
             },
 
             productDescription() {
