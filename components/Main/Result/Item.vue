@@ -16,7 +16,7 @@
         <div class="result-item__product-answer">
             <table class="table table-bordered table-striped">
                 <tbody>
-                    <tr v-for="answer in filtedAnswers" :key="answer.question">
+                    <tr v-for="(answer, index) in filtedAnswers" :key="index">
                         <td>{{ formatQuestionName(answer.question) }}</td>
                         <td>{{ formatAnswer(answer.content) }}</td>
                     </tr>
