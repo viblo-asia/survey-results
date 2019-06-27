@@ -1,16 +1,17 @@
 <template>
-    <div :id="entry" class="entry">
-        <a v-scroll-to="scroll(entry)" class="h3" href="#">{{ entry }}</a>
-    </div>
+    <h3 class="entry">
+        <a
+            v-scroll-to="`#${entry}`"
+            :href="`#${entry}`"
+            class="h3"
+        >
+            {{ entry }}
+        </a>
+    </h3>
 </template>
 
-
 <script>
-    import scroll from "~/mixins/scroll"
-
     export default {
-        mixins: [scroll],
-
         props: {
             entry: {
                 type: String

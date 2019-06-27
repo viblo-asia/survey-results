@@ -5,15 +5,16 @@
         </div>
 
         <ul id="main-menu" class="sidebar__path">
-            <li><a href="#overview" class="menu-item">Overview</a></li>
+            <li><a v-scroll-to="'#overview'" href="#overview" class="menu-item active">Overview</a></li>
             <li>
-                <a href="#products" class="menu-item">Products</a>
+                <a v-scroll-to="'#products'" href="#products" class="menu-item">Products</a>
                 <ul class="sidebar__path-answer">
                     <li
                         v-for="(answer, index) in answers"
                         :key="index"
                     >
                         <a
+                            v-scroll-to="`#survey-${answer.id}`"
                             :href="`#survey-${answer.id}`"
                             :class="{
                                 'active': isActive(answer),
