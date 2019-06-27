@@ -22,11 +22,7 @@
 </template>
 
 <script>
-    import scroll from "~/mixins/scroll"
-
     export default {
-        mixins: [scroll],
-
         props: {
             projectsTotal: {
                 type: Number,
