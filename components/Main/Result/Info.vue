@@ -1,28 +1,32 @@
 <template>
     <div class="product-info">
         <div class="product-info__header">
-            <img :src="productLogo" alt="Product Logo">
+            <img :src="imageUrl(product.banner_image) || imageUrl(product.company_logo)" alt="Product Logo">
         </div>
 
         <div class="product-info__body">
             <div class="product-info__content">
                 <div class="product-info__content-side">
-                    <img :src="companyLogo" alt="Company Logo">
+                    <img :src="imageUrl(product.company_logo)" alt="Company Logo">
                 </div>
+
                 <div class="product-info__content-main">
                     <div class="product-info__product-name">
-                        {{ productName }}
+                        {{ product.product_name }}
                     </div>
 
                     <div class="product-info__company-name">
-                        {{ companyName }}
+                        {{ product.company_name }}
                     </div>
+
                     <div class="product-info__company-url">
                         <a
-                            :href=" companyUrl "
+                            :href="product.company_url"
                             target="_blank"
                             rel="noopener noreferrer"
-                        >{{ companyUrl }}</a>
+                        >
+                            {{ product.company_url }}
+                        </a>
                     </div>
                 </div>
             </div>
@@ -37,35 +41,9 @@
 
     export default {
         props: {
-            answers: {
-                type: Array
-            }
-        },
-
-        data() {
-            return {
-                env: process.env.baseUrl
-            }
-        },
-        computed: {
-            productName() {
-                return findContentOfQuestion(this.answers, "product_name")
-            },
-            productLogo() {
-                return this.imageUrl(
-                    findContentOfQuestion(this.answers, "banner_image")
-                )
-            },
-            companyName() {
-                return findContentOfQuestion(this.answers, "company_name")
-            },
-            companyLogo() {
-                return this.imageUrl(
-                    findContentOfQuestion(this.answers, "company_logo")
-                )
-            },
-            companyUrl() {
-                return findContentOfQuestion(this.answers, "company_url")
+            product: {
+                type: Object,
+                default: () => ({})
             }
         },
 
@@ -73,7 +51,7 @@
             imageUrl(imageItem) {
                 return imageItem ? image(imageItem) : ""
             }
-        }
+        },
     }
 </script>
 

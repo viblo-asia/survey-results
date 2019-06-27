@@ -1,16 +1,19 @@
 <template>
-    <section :id="formatScrollableId(productName)" class="result-item scrollspy">
+    <section :id="`survey-${item.id}`" class="result-item scrollspy">
         <div class="result-item__product-name">
             <VPopover trigger="hover" :delay="{ show: 200, hide: 300 }">
-                <a :href="productUrl" target="_blank">{{ productName }}</a>
+                <a :href="product.product_url" target="_blank">
+                    {{ product.product_name }}
+                </a>
 
-                <template slot="popover">
-                    <Info :answers="productInfo" />
-                </template>
+                <Info slot="popover" :product="product" />
             </VPopover>
         </div>
+
         <blockquote class="result-item__product-description blockquote">
-            <p>{{ productDescription }}</p>
+            <p>
+                {{ product.product_description }}
+            </p>
         </blockquote>
 
         <div class="result-item__product-answer">
@@ -27,12 +30,11 @@
 </template>
 
 <script>
-    import _transform from 'lodash/transofrm'
+    import _transform from 'lodash/transform'
     import _filter from 'lodash/filter'
     import _includes from 'lodash/includes'
     import _startCase from "lodash/startCase"
     import _findIndex from "lodash/findIndex"
-    import scroll from "~/mixins/scroll"
     import { VPopover } from "v-tooltip"
     import { findContentOfQuestion } from "~/libs/utils"
     import Info from "./Info.vue"
@@ -42,6 +44,7 @@
         "product_url",
         "product_description",
         "company_name",
+        "company_url",
         "banner_image",
         "company_logo"
     ]
@@ -51,8 +54,6 @@
             VPopover,
             Info,
         },
-
-        mixins: [scroll],
 
         props: {
             item: {
@@ -72,21 +73,15 @@
                 return _filter(this.answers, answer => !_includes(productInfoFields, answer.question))
             },
 
-            productInfo() {
-                return _filter(this.answers, answer => _includes(productInfoFields, answer.question))
-            },
+            product() {
+                const data = _filter(this.answers, answer => _includes(productInfoFields, answer.question))
+                const info = _transform(data, (info, item) => {
+                    info[item.question] = item.content
+                    return info
+                }, {})
 
-            productDescription() {
-                return findContentOfQuestion(this.answers, "product_description")
+                return info
             },
-
-            productName() {
-                return findContentOfQuestion(this.answers, "product_name")
-            },
-
-            productUrl() {
-                return findContentOfQuestion(this.answers, "product_url")
-            }
         },
 
         methods: {

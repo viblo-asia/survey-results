@@ -1,5 +1,7 @@
 require('dotenv').config()
 
+const { pageSEO, defaultSEOData } = require('./utils/seo')
+
 const PUBLIC_PATH = process.env.PUBLIC_PATH
 
 export default {
@@ -19,15 +21,11 @@ export default {
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { hid: 'description', name: 'description', content: 'Viblo Teachnical Survey Results 2019' }
+            ...pageSEO(defaultSEOData),
         ],
 
         link: [
-            {
-                rel: 'icon',
-                type: 'image/x-icon',
-                href: 'https://viblo.asia/favicon.ico'
-            }
+            { rel: 'icon', type: 'image/x-icon', href: 'https://viblo.asia/favicon.ico' },
         ]
     },
 

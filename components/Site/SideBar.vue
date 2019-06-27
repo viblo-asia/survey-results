@@ -5,22 +5,23 @@
         </div>
 
         <ul id="main-menu" class="sidebar__path">
-            <li v-for="(path,index) in defaultPath" :key="index">
-                <a
-                    v-scroll-to="scroll(path)"
-                    :class="{'active': active(path) }"
-                    class="menu-item"
-                    :href="`#${formatScrollableId(path)}`"
-                >{{ answerTitle(path) }}</a>
-
-                <ul v-if="path ==='products'" class="sidebar__path-answer">
-                    <li v-for="(answerPath,answerPathIndex) in answersPath" :key="answerPathIndex">
+            <li><a href="#overview" class="menu-item">Overview</a></li>
+            <li>
+                <a href="#products" class="menu-item">Products</a>
+                <ul class="sidebar__path-answer">
+                    <li
+                        v-for="(answer, index) in answers"
+                        :key="index"
+                    >
                         <a
-                            v-scroll-to="scroll(answerPath)"
-                            :class="{'active': (active(answerPath) || (currentRouteHash === '#products' && answerPathIndex === 0)) }"
-                            class="menu-item"
-                            :href="`#${formatScrollableId(answerPath)}`"
-                        >{{ answerTitle(answerPath) }}</a>
+                            :href="`#survey-${answer.id}`"
+                            :class="{
+                                'active': isActive(answer),
+                                'menu-item': true
+                            }"
+                        >
+                            {{ answer.product_name }}
+                        </a>
                     </li>
                 </ul>
             </li>
@@ -32,12 +33,9 @@
     import _lowerCase from "lodash/lowerCase"
     import _keys from "lodash/keys"
     import _get from "lodash/get"
-    import scroll from "~/mixins/scroll"
     import scrollSpy from 'simple-scrollspy'
 
     export default {
-        mixins: [scroll],
-
         props: {
             answers: {
                 type: Array,
@@ -45,25 +43,7 @@
             }
         },
 
-        data() {
-            const answersPath = this.answers.map(
-                o => o.answers.data.find(i => i.question == "product_name").content
-            )
-            const defaultPath = ["overview", "products"]
-
-            return {
-                defaultPath,
-                answersPath
-            }
-        },
-
-        computed: {
-            currentRouteHash() {
-                return this.$route.hash
-            }
-        },
-
-        mounted(){
+        mounted() {
             window.onload = function () {
                 scrollSpy('#main-menu', {
                     sectionClass: '.scrollspy',
@@ -74,14 +54,8 @@
         },
 
         methods: {
-            answerTitle(name) {
-                return _lowerCase(name)
-            },
-
-            active(name) {
-                const path = this.formatScrollableId(name)
-
-                return this.currentRouteHash === `#${path}`
+            isActive(answer) {
+                return this.$route.hash === `survey-${answer.id}`
             }
         }
     }
