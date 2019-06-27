@@ -48,7 +48,15 @@ export default {
     /*
      ** Nuxt.js modules
      */
-    modules: ['vue-scrollto/nuxt', '@nuxtjs/google-analytics'],
+    modules: [
+        '@nuxtjs/google-analytics',
+        [ 'vue-scrollto/nuxt', {
+            duration: 500,
+            easing: 'ease',
+            offset: 0,
+            onDone: (el) => window.location.hash = el.getAttribute('id'),
+        }]
+    ],
 
     /**
      * Google analytics

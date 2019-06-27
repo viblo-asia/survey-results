@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div class="mb-5">
+        <div id="overview" class="mb-5">
             <Entry entry="overview" />
 
-            <section id="overview" class="scrollspy">
+            <section class="scrollspy">
                 <OverView :projects-total="answers.length" />
             </section>
         </div>
