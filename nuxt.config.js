@@ -3,6 +3,7 @@ require('dotenv').config()
 const { pageSEO, defaultSEOData } = require('./utils/seo')
 
 const PUBLIC_PATH = process.env.PUBLIC_PATH
+const GOOGLE_ANALYTICS_TRACK_ID = process.env.GOOGLE_ANALYTICS_TRACK_ID
 
 export default {
     mode: 'spa',
@@ -47,8 +48,14 @@ export default {
     /*
      ** Nuxt.js modules
      */
-    modules: ['vue-scrollto/nuxt'],
+    modules: ['vue-scrollto/nuxt', '@nuxtjs/google-analytics'],
 
+    /**
+     * Google analytics
+     */
+    googleAnalytics: {
+        id: GOOGLE_ANALYTICS_TRACK_ID
+    },
     /*
      ** Build configuration
      */
@@ -56,17 +63,17 @@ export default {
         transpile: [/^element-ui/],
 
         /*
-        ** Build configuration
-        */
-        publicPath: '/assets',
+         ** Build configuration
+         */
+        publicPath: '/assets'
     },
 
     router: {
-        base: PUBLIC_PATH,
+        base: PUBLIC_PATH
     },
 
     server: {
         host: process.env.HOST || '0.0.0.0',
         port: process.env.PORT || 3000
-    },
+    }
 }
