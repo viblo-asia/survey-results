@@ -64,9 +64,10 @@
         background-color: #fff;
         z-index: 9999;
         position: relative;
-        -moz-box-shadow: 3px 3px 5px 6px #ccc;
-        -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-        box-shadow: 3px 3px 5px 6px #ccc;
+        box-shadow: 1px 2px 8px 3px rgba(0,0,0,0.2);
+        -moz-box-shadow: 1px 2px 8px 3px rgba(0,0,0,0.2);
+        -webkit-box-shadow: 1px 2px 8px 3px rgba(0,0,0,0.2);
+        box-shadow: 1px 2px 8px 3px rgba(0,0,0,0.2);
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px;

@@ -3,7 +3,7 @@
         <div class="result-item__product-name">
             <VPopover trigger="hover" :delay="{ show: 200, hide: 300 }">
                 <a :href="product.product_url" target="_blank">
-                    {{ product.product_name }}
+                    <span>{{ product.product_name }}</span>
                 </a>
 
                 <Info slot="popover" :product="product" />
@@ -23,7 +23,12 @@
                         <td class="w-25">
                             {{ formatQuestionName(answer.question) }}
                         </td>
-                        <td>
+                        <td v-if="answer.question === 'product_url'">
+                            <a :href="answer.content" target="_blank">
+                                {{ answer.content }}
+                            </a>
+                        </td>
+                        <td v-else>
                             {{ formatAnswer(answer.content) }}
                         </td>
                     </tr>
@@ -74,7 +79,10 @@
 
         computed: {
             filtedAnswers() {
-                return _filter(this.answers, answer => !_includes(productInfoFields, answer.question))
+                return _filter(this.answers, answer => {
+                    return _includes(['product_name', 'product_url'], answer.question)
+                        || !_includes(productInfoFields, answer.question)
+                })
             },
 
             product() {
@@ -95,6 +103,10 @@
 
             formatAnswer(text) {
                 return text.split(",").join(", ")
+            },
+
+            imageUrl(imageItem) {
+                return imageItem ? image(imageItem) : ""
             }
         }
     }
