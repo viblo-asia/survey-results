@@ -17,8 +17,12 @@
             <table class="table table-bordered table-striped">
                 <tbody>
                     <tr v-for="(answer, index) in filtedAnswers" :key="index">
-                        <td>{{ formatQuestionName(answer.question) }}</td>
-                        <td>{{ formatAnswer(answer.content) }}</td>
+                        <td class="w-25">
+                            {{ formatQuestionName(answer.question) }}
+                        </td>
+                        <td>
+                            {{ formatAnswer(answer.content) }}
+                        </td>
                     </tr>
                 </tbody>
             </table>
