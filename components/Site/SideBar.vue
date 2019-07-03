@@ -5,14 +5,27 @@
         </div>
 
         <ul id="main-menu" class="sidebar__path">
-            <li><a v-scroll-to="'#overview'" href="#overview" class="menu-item active">Overview</a></li>
             <li>
-                <a v-scroll-to="'#products'" href="#products" class="menu-item">Products</a>
+                <a
+                    v-scroll-to="'#overview'"
+                    href="#overview"
+                    class="menu-item"
+                    :class="{
+                        'active': isActive('overview')
+                    }"
+                >Overview</a>
+            </li>
+            <li>
+                <a
+                    v-scroll-to="'#products'"
+                    href="#products"
+                    class="menu-item"
+                    :class="{
+                        'active': isActive('products')
+                    }"
+                >Products</a>
                 <ul class="sidebar__path-answer">
-                    <li
-                        v-for="(answer, index) in answers"
-                        :key="index"
-                    >
+                    <li v-for="(answer, index) in answers" :key="index">
                         <a
                             v-scroll-to="`#survey-${answer.id}`"
                             :href="`#survey-${answer.id}`"
@@ -20,9 +33,7 @@
                                 'active': isActive(answer),
                                 'menu-item': true
                             }"
-                        >
-                            {{ answer.product_name }}
-                        </a>
+                        >{{ answer.product_name }}</a>
                     </li>
                 </ul>
             </li>
@@ -34,7 +45,7 @@
     import _lowerCase from "lodash/lowerCase"
     import _keys from "lodash/keys"
     import _get from "lodash/get"
-    import scrollSpy from 'simple-scrollspy'
+    import scrollSpy from "simple-scrollspy"
 
     export default {
         props: {
@@ -44,20 +55,37 @@
             }
         },
 
-        mounted() {
-            window.onload = function () {
-                scrollSpy('#main-menu', {
-                    sectionClass: '.scrollspy',
-                    menuActiveTarget: '.menu-item',
-                    offset: 100
-                })
+        created() {
+            if (process.browser) {
+                window.onload = function() {
+                    scrollSpy("#main-menu", {
+                        sectionClass: ".scrollspy",
+                        menuActiveTarget: ".menu-item",
+                        offset: 100
+                    })
+                }
+            }
+        },
+
+        destroyed() {
+            if (process.browser) {
+                window.onload = null
             }
         },
 
         methods: {
-            isActive(answer) {
-                return this.$route.hash === `survey-${answer.id}`
-            }
+            isActive(item) {
+                if (typeof item === "string") {
+                    if (item === "overview") {
+                        return (
+                            this.$route.hash === "" ||
+                            this.$route.hash === "#overview"
+                        )
+                    }
+                    return this.$route.hash === `#${item}`
+                }
+                return this.$route.hash === `#survey-${item.id}`
+            },
         }
     }
 </script>

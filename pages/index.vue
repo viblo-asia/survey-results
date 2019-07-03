@@ -18,16 +18,15 @@
             Main,
             SideBar
         },
-
         data: () => ({
-            answers: [],
+            answers: []
         }),
 
         async asyncData() {
             try {
-                const { data } = await axios.get('/api/survey')
+                const { data } = await axios.get("/api/survey")
                 return { answers: data.data }
-            } catch(e) {
+            } catch (e) {
                 return { answers: [] }
             }
         }
