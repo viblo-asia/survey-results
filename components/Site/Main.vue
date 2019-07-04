@@ -5,6 +5,7 @@
 
             <section class="scrollspy">
                 <OverView :projects-total="answers.length" />
+                <Suggestion />
             </section>
         </div>
 
@@ -22,12 +23,14 @@
     import OverView from "~/components/Main/OverView.vue"
     import ResultItem from "~/components/Main/Result/Item.vue"
     import Entry from "~/components/Site/Entry.vue"
+    import Suggestion from "~/components/Main/Suggestion.vue"
 
     export default {
         components: {
             OverView,
             ResultItem,
-            Entry
+            Entry,
+            Suggestion
         },
 
         props: {
