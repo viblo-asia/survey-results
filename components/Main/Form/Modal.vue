@@ -3,21 +3,33 @@
         <form v-if="!submited" ref="form" @submit="onSubmit">
             <StackModal
                 :show="show"
-                title="Survey Suggestion"
                 :modal-class="{'modal-lg':true}"
                 :save-button="{visible: false}"
                 :cancel-button="{ btnClass: {'d-none': true}}"
                 @close="close"
                 @save="onSubmit"
             >
+                <template slot="modal-header">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Survey Suggestion
+                        </h5>
+                        <button
+                            type="button"
+                            class="close"
+                            aria-label="Close"
+                            @click.stop="$emit('close')"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </template>
                 <div class="container-fluid modal-form">
                     <div class="form-group row">
                         <label
                             for="productName"
                             class="col-sm-3 control-label required"
-                        >
-                            Product Name:
-                        </label>
+                        >Product Name:</label>
                         <div class="col-sm-9">
                             <input
                                 v-model="form.name"
@@ -25,7 +37,7 @@
                                 class="form-control"
                                 aria-describedby="productName"
                                 placeholder="Product Name"
-                                :class="errors.name ? 'is-invalid' : 'is-valid'"
+                                :class="errors.name ? 'is-invalid' : ''"
                                 required
                             >
                             <div v-if="errors.name" class="invalid-feedback">
@@ -43,7 +55,7 @@
                                 class="form-control"
                                 aria-describedby="productLink"
                                 placeholder="Product Link"
-                                :class="errors.link ? 'is-invalid' : 'is-valid'"
+                                :class="errors.link ? 'is-invalid' : ''"
                                 required
                             >
                             <div v-if="errors.link" class="invalid-feedback">
@@ -61,12 +73,9 @@
                                 class="form-control"
                                 aria-describedby="emailContact"
                                 placeholder="Email Contact"
-                                :class="errors.email ? 'is-invalid' : 'is-valid'"
+                                :class="errors.email ? 'is-invalid' : ''"
                             >
-                            <div
-                                v-if="errors.email"
-                                class="invalid-feedback"
-                            >
+                            <div v-if="errors.email" class="invalid-feedback">
                                 {{ errors.email[0] }}
                             </div>
                         </div>
@@ -78,7 +87,7 @@
                                 v-model="form.comment"
                                 placeholder="Comment"
                                 class="form-control"
-                                :class="errors.comment ? 'is-invalid' : 'is-valid'"
+                                :class="errors.comment ? 'is-invalid' : ''"
                             />
                             <div
                                 v-if="errors.comment"
@@ -89,11 +98,13 @@
                         </div>
                     </div>
                 </div>
-                <slot name="modal-footer">
-                    <button type="submit" class="btn-primary btn btn-block">
-                        Submit
-                    </button>
-                </slot>
+                <template slot="modal-footer">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn-primary btn btn-block">
+                            Submit
+                        </button>
+                    </div>
+                </template>
             </StackModal>
         </form>
 
@@ -101,8 +112,24 @@
             :show="submited"
             title="Survey Suggestion"
             :modal-class="{'modal-lg':true}"
-            @close="submited=false"
+            :save-button="{ visible: false}"
+            :cancel-button="{ title:'Close'}"
         >
+            <template slot="modal-header">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        Survey Suggestion
+                    </h5>
+                    <button
+                        type="button"
+                        class="close"
+                        aria-label="Close"
+                        @click.stop="submited=false"
+                    >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </template>
             <div class="alert alert-success" role="alert">
                 Cảm ơn những góp ý của bạn về dự án bạn mong muốn hiển thị trong survey.
                 Chúng tôi sẽ cố gắng hoàn thiện những thông tin phù hợp với bạn trong thời gian sớm nhất.
@@ -169,12 +196,11 @@
 </script>
 
 <style lang="scss">
+    @import "~@innologica/vue-stackable-modal/src/assets/transitions/translate-fade.scss";
+
     .modal {
         &-form {
             width: 100%;
-            textarea {
-                resize: none;
-            }
         }
         &-title {
             margin: 0 auto;
@@ -192,9 +218,6 @@
                 content: " *";
                 color: #e32;
             }
-        }
-        &-footer {
-            display: none;
         }
     }
 </style>
