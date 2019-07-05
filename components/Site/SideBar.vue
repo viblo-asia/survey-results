@@ -55,14 +55,14 @@
             }
         },
 
-        created() {
+        mounted() {
             if (process.browser) {
-                window.onload = function() {
-                    scrollSpy("#main-menu", {
-                        sectionClass: ".scrollspy",
-                        menuActiveTarget: ".menu-item",
-                        offset: 100
-                    })
+                if (window.attachEvent) {
+                    window.attachEvent("onload", this.init())
+                } else if (window.addEventListener) {
+                    window.addEventListener("load", this.init(), false)
+                } else {
+                    document.addEventListener("load", this.init(), false)
                 }
             }
         },
@@ -86,6 +86,14 @@
                 }
                 return this.$route.hash === `#survey-${item.id}`
             },
+
+            init() {
+                scrollSpy("#main-menu", {
+                    sectionClass: ".scrollspy",
+                    menuActiveTarget: ".menu-item",
+                    offset: 100
+                })
+            }
         }
     }
 </script>
