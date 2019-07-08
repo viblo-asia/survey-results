@@ -7,7 +7,7 @@
         <div class="product-info__body">
             <div class="product-info__content">
                 <div class="product-info__content-side">
-                    <img :src="imageUrl(product.company_logo)" alt="Company Logo">
+                    <img :src="imageUrl(product.company_logo)" alt="Company Logo" class="img-responsive">
                 </div>
 
                 <div class="product-info__content-main">
@@ -77,7 +77,7 @@
             img {
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
+                // object-fit: cover;
                 object-position: center;
             }
         }
@@ -99,7 +99,7 @@
                 img {
                     height: 100%;
                     width: 100%;
-                    object-fit: cover;
+                    // object-fit: cover;
                     object-position: center;
                 }
             }

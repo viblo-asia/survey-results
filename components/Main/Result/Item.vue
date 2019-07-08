@@ -1,5 +1,5 @@
 <template>
-    <section :id="`survey-${item.id}`" class="result-item scrollspy">
+    <section>
         <div class="result-item__product-name">
             <VPopover trigger="hover" :delay="{ show: 200, hide: 300 }">
                 <a :href="product.product_url" target="_blank">
