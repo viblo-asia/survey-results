@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="mb-5 scrollspy" id="overview">
+        <div id="overview" class="mb-5 scrollspy">
             <section>
-                <Entry entry="overview"/>
+                <Entry entry="overview" />
                 <OverView :projects-total="answers.length" />
                 <Suggestion />
             </section>
@@ -10,14 +10,20 @@
 
         <div id="products" class="scrollspy">
             <section>
-                <Entry entry="products"/>
+                <Entry entry="products" />
             </section>
         </div>
-        
-        <div v-for="answer in answers" :key="answer.id" :id="`survey-${answer.id}`" class="result-item scrollspy">
+
+        <div
+            v-for="answer in answers"
+            :id="`survey-${answer.id}`"
+            :key="answer.id"
+            class="result-item scrollspy"
+        >
             <ResultItem :item="answer" class="mb-1" />
         </div>
-        
+
+        <Suggestion />
     </div>
 </template>
 
