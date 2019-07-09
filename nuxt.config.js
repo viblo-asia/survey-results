@@ -17,7 +17,7 @@ export default {
      ** Headers of the page
      */
     head: {
-        title: 'Technical Survey Results | Viblo',
+        title: defaultSEOData.title,
 
         meta: [
             { charset: 'utf-8' },
