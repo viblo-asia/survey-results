@@ -98,6 +98,9 @@
 
         methods: {
             formatQuestionName(text) {
+                if (_startCase(text) === 'Serivce') {
+                    return 'Service'
+                }
                 return _startCase(text)
             },
 
