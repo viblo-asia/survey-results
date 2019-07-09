@@ -7,9 +7,9 @@ export const metaTag = (name, content, attribute = 'name') => ({
 })
 
 export const defaultSEOData = {
-    title: 'Technical Survey Results | Viblo',
-    description: 'Kết quả survey về những kỹ thuật đang được sử dụng'
-        + 'trong các sản phẩm công nghệ nổi tiếng trong đất nước Việt Nam chúng ta.',
+    title: 'Technical Survey Results 2019 | Viblo',
+    description: 'Cùng Viblo Survey 2019 khám phá những kỹ thuật, công nghệ đang được sử dụng'
+        + 'trong các sản phẩm công nghệ nổi tiếng tại Việt Nam.',
     keywords: 'viblo, viblo survey results, survey results 2019, technical survey results'
 }
 
