@@ -6,33 +6,16 @@
 
         <ul id="main-menu" class="sidebar__path">
             <li>
-                <a
-                    v-scroll-to="'#overview'"
-                    href="#overview"
-                    class="menu-item"
-                    :class="{
-                        'active': isActive('overview')
-                    }"
-                >Overview</a>
+                <a v-scroll-to="'#overview'" href="#overview" class="menu-item">Overview</a>
             </li>
             <li>
-                <a
-                    v-scroll-to="'#products'"
-                    href="#products"
-                    class="menu-item"
-                    :class="{
-                        'active': isActive('products')
-                    }"
-                >Products</a>
+                <a v-scroll-to="'#products'" href="#products" class="menu-item">Products</a>
                 <ul class="sidebar__path-answer">
                     <li v-for="(answer, index) in answers" :key="index">
                         <a
                             v-scroll-to="`#survey-${answer.id}`"
                             :href="`#survey-${answer.id}`"
-                            :class="{
-                                'active': isActive(answer),
-                                'menu-item': true
-                            }"
+                            class="menu-item"
                         >{{ answer.product_name }}</a>
                     </li>
                 </ul>
@@ -46,6 +29,7 @@
     import _keys from "lodash/keys"
     import _get from "lodash/get"
     import scrollSpy from "simple-scrollspy"
+    import VueScrollTo from 'vue-scrollto'
 
     export default {
         props: {
@@ -56,6 +40,10 @@
         },
 
         mounted() {
+            if(this.$route.hash !== "") {
+                VueScrollTo.scrollTo(this.$route.hash, 0, {})
+            }
+            
             if (process.browser) {
                 if (window.attachEvent) {
                     window.attachEvent("onload", this.init())
@@ -74,24 +62,11 @@
         },
 
         methods: {
-            isActive(item) {
-                if (typeof item === "string") {
-                    if (item === "overview") {
-                        return (
-                            this.$route.hash === "" ||
-                            this.$route.hash === "#overview"
-                        )
-                    }
-                    return this.$route.hash === `#${item}`
-                }
-                return this.$route.hash === `#survey-${item.id}`
-            },
-
             init() {
                 scrollSpy("#main-menu", {
                     sectionClass: ".scrollspy",
                     menuActiveTarget: ".menu-item",
-                    offset: 100
+                    offset: -300
                 })
             }
         }
