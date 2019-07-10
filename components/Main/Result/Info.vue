@@ -1,13 +1,11 @@
 <template>
     <div class="product-info">
-        <div class="product-info__header">
-            <img :src="imageUrl(product.banner_image) || imageUrl(product.company_logo)" alt="Product Logo">
+        <div class="product-info__header" v-bind:style = "{ 'background-image' : 'url(' + (imageUrl(product.banner_image) || imageUrl(product.company_logo)) + ')'}">
         </div>
 
         <div class="product-info__body">
             <div class="product-info__content">
-                <div class="product-info__content-side">
-                    <img :src="imageUrl(product.company_logo)" alt="Company Logo" class="img-responsive">
+                <div class="product-info__content-side" v-bind:style = "{ 'background-image': 'url(' + imageUrl(product.company_logo) + ')'}">
                 </div>
 
                 <div class="product-info__content-main">
@@ -73,13 +71,10 @@
         border-radius: 5px;
         &__header {
             height: 115px;
-            width: 100%;
-            img {
-                width: 100%;
-                height: 100%;
-                // object-fit: cover;
-                object-position: center;
-            }
+            width: auto;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
         }
         &__body {
             display: flex;
@@ -90,18 +85,14 @@
             padding: 10px;
             display: inline-block;
             &-side {
-                width: 75px;
-                height: 75px;
+                width: 96px;
+                height: 96px;
                 overflow: hidden;
                 border: 1px solid #fff;
-                border-radius: 50%;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
                 float: left;
-                img {
-                    height: 100%;
-                    width: 100%;
-                    // object-fit: cover;
-                    object-position: center;
-                }
             }
             &-main {
                 width: 265px;
