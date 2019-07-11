@@ -11,9 +11,10 @@
             </p>
 
             <p>
-                Chúng tôi đã tiến hành thực hiện một survey về những kỹ thuật đang được sử dụng
+                Chúng tôi đang tiến hành thực hiện một survey về những kỹ thuật đang được sử dụng
                 trong các sản phẩm công nghệ nổi tiếng trong đất nước Việt Nam chúng ta.
-                Dưới đây là báo cáo kết quả tổng hợp những kỹ thuật từ
+                Hiện tại, chúng tôi đang nhận được những phản hồi đầu tiên và sẽ liên tục cập nhật
+                trong thời gian tới. Dưới đây là báo cáo kết quả tổng hợp những kỹ thuật từ
                 {{ totalLabel }} dự án công nghệ nổi tiếng đã đồng hành tham gia
                 cùng chúng tôi trong cuộc khảo sát lần này.
             </p>
