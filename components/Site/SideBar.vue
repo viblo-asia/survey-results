@@ -6,7 +6,7 @@
 
         <ul id="main-menu" class="sidebar__path">
             <li>
-                <a v-scroll-to="'#overview'" href="#overview" class="menu-item">Overview</a>
+                <a v-scroll-to="'#overview'" href="#overview" class="menu-item active">Overview</a>
             </li>
             <li>
                 <a v-scroll-to="'#products'" href="#products" class="menu-item">Products</a>
