@@ -16,7 +16,7 @@
             </p>
         </blockquote>
 
-        <div class="result-item__product-answer">
+        <div class="result-item__product-answer table-responsive">
             <table class="table table-bordered table-striped">
                 <tbody>
                     <tr v-for="(answer, index) in filtedAnswers" :key="index">
