@@ -13,8 +13,8 @@
     "bootstrap": "^4.3.1",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
-    "lodash": "^4.17.15",
-    "nuxt": "^2.11.0",
+    "lodash": "^4.17.20",
+    "nuxt": "^2.14.6",
     "simple-scrollspy": "^2.0.1",
     "v-tooltip": "^2.0.2",
     "vue-scrollto": "^2.15.0"
@@ -30,6 +30,7 @@
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",
     "prettier": "^1.17.1",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "yarn-audit-fix": "^3.2.2"
   }
 }
