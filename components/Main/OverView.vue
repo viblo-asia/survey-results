@@ -4,10 +4,10 @@
             <p>
                 Viblo là một dịch vụ miễn phí về chia sẻ và học tập kiến thức về
                 Công Nghệ Thông Tin dành cho các lập trình viên ở Việt Nam.
-                Trải qua gần 4 năm hình thành và phát triển, hiện Viblo đã trở thành
-                một cộng đồng lớn mạnh với hơn 25,000 người dùng,
-                hơn 20,000 bài viết được chia sẻ, hơn 700 bài viết mới
-                cũng như hơn 1,5 triệu pageviews hàng tháng.
+                Trải qua gần 7 năm hình thành và phát triển, hiện Viblo đã trở thành
+                một cộng đồng lớn mạnh với hơn 70,000 người dùng,
+                hơn 32,000 bài viết được chia sẻ, gần 1000 bài viết mới
+                cũng như 2 triệu pageviews hàng tháng.
             </p>
 
             <p>

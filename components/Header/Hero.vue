@@ -9,7 +9,7 @@
         <div lass="hero__content">
             <span class="hero__content-title">Technical Survey Results</span>
             <br>
-            <span class="hero__content-year">2019</span>
+            <span class="hero__content-year">2021</span>
         </div>
     </div>
 </template>
