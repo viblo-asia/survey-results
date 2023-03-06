@@ -10,7 +10,8 @@ export default {
 
     env: {
         baseUrl: process.env.API_HOST || 'https://viblo.asia',
-        IMAGES_URL: process.env.IMAGES_URL || 'https://images.viblo.asia'
+        IMAGES_URL: process.env.IMAGES_URL || 'https://images.viblo.asia',
+        GOOGLE_ANALYTICS_TRACK_ID
     },
 
     /*
@@ -43,13 +44,18 @@ export default {
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [],
+    plugins: [
+        '~/plugins/vue-gtag.js',
+    ],
+
+    buildModules: [
+        '@nuxtjs/google-analytics',
+    ],
 
     /*
      ** Nuxt.js modules
      */
     modules: [
-        '@nuxtjs/google-analytics',
         [ 'vue-scrollto/nuxt', {
             duration: 300,
             easing: 'ease',
@@ -62,7 +68,10 @@ export default {
      * Google analytics
      */
     googleAnalytics: {
-        id: GOOGLE_ANALYTICS_TRACK_ID
+        id: GOOGLE_ANALYTICS_TRACK_ID,
+        debug: {
+          sendHitTask: true,
+        },
     },
     /*
      ** Build configuration
